@@ -1,13 +1,12 @@
 <div class="col-lg-9 mt-2">
     <div class="card">
         <div class="card-header">
-            ENROLLMENTS
+            USER
         </div>
-
         <?php
         include 'proses/connect.php'; 
 
-        $sql = "SELECT * FROM enrollments"; 
+        $sql = "SELECT * FROM users"; 
         $result = $conn->query($sql);
         ?>
 
@@ -17,20 +16,22 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Enrollments</title>
+            <title>Users</title>
+            <link rel="stylesheet" href="assets/css/style.css"> <!-- Sesuaikan dengan path CSS Anda -->
         </head>
 
         <body>
             <div id="main-content">
-                <h3>Daftar Enrollments</h3>
+                <h3>Daftar Users</h3>
                 <table border="1">
                     <thead>
                         <tr>
-                            <th>Enrollment ID</th>
                             <th>User ID</th>
-                            <th>Course ID</th>
-                            <th>Enrollment Date</th>
-                            <th>Status</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Phone Number</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,15 +39,16 @@
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td>" . $row["enrollment_id"] . "</td>";
                                 echo "<td>" . $row["user_id"] . "</td>";
-                                echo "<td>" . $row["course_id"] . "</td>";
-                                echo "<td>" . $row["enrollment_date"] . "</td>";
-                                echo "<td>" . $row["status"] . "</td>";
+                                echo "<td>" . $row["name"] . "</td>";
+                                echo "<td>" . $row["gender"] . "</td>";
+                                echo "<td>" . $row["email"] . "</td>";
+                                echo "<td>" . $row["addres"] . "</td>";
+                                echo "<td>" . $row["phone_number"] . "</td>";
                                 echo "</tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='5'>Tidak ada enrollment tersedia</td></tr>";
+                            echo "<tr><td colspan='6'>Tidak ada user tersedia</td></tr>";
                         }
                         ?>
                     </tbody>
@@ -59,6 +61,7 @@
         </body>
 
         </html>
+
 
     </div>
 </div>
